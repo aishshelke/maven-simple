@@ -21,8 +21,9 @@ pipeline {
       }
       stage("Deploy") {
           steps {
+            git 'https://github.com/jglick/simple-maven-project-with-tests.git'
             sh "mvn -Dmaven.test.failure.ignore=true clean install"
-             sh 'cp target/*.jar /home/ashelke/tomcat9/webapps/.'
+            sh 'cp target/*.jar /home/ashelke/tomcat9/webapps/.'
             
           }
 
